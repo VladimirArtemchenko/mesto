@@ -1,0 +1,16 @@
+.cards {
+    max-width: 320px;
+    margin: 50px calc((100% - 880px)/2) 0;
+}
+
+@media screen and (max-width: 900px) {
+    .cards {
+        margin: 50px calc((100% - 282px - 282px - 17px) / 2) 0;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .cards {
+        margin: 50px calc((100% - 282px) / 2) 0;
+    }
+}
