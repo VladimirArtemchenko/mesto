@@ -1,9 +1,9 @@
-.popup__name_userjob {
+.popup__input_name_userjob {
     margin: 30px 36px 0;
 }
 
 @media screen and (max-width: 767px) {
-    .popup__name_userjob {
+    .popup__input_name_userjob {
         margin: 30px 22px 0;
     }
 }
