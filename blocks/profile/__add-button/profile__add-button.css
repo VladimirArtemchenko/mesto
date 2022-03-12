@@ -20,6 +20,7 @@
 
 @media screen and (max-width: 767px) {
     .profile__add-button {
+        grid-area: add;
         width: 282px;
         background-size: 6%;
         margin: 32px calc(100% - 282px) 0;

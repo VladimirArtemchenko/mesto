@@ -11,6 +11,6 @@
 
 @media screen and (max-width: 660px) {
     .cards {
-        margin: 50px calc((100% - 282px) / 2) 0;
+        margin: 36px calc((100% - 282px) / 2) 0;
     }
 }

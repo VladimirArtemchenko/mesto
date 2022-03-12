@@ -6,7 +6,7 @@
     line-height: 50px;
     text-align: center;
     color: white;
-    margin: 62px 36px 0;
+    margin: 48px 36px 37px;
     cursor: pointer;
     transition: opacity 0.2s;
     border-radius: 2px;
@@ -24,6 +24,6 @@
         height: 46px;
         font-size: 14px;
         line-height: 46px;
-        margin: 45px 22px 0;
+        margin: 45px 22px 25px;
     }
 }

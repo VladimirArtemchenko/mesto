@@ -13,7 +13,12 @@
 @media screen and (max-width: 767px) {
     .profile {
         max-width: 282%;
-        flex-direction: column;
+        display: grid;
+        grid-template-areas: 
+        'avatar avatar'
+        'info edit'
+        'info edit'
+        'add add';
         margin: 42px calc((100% - 282px) / 2) 0;
         position: relative;
     }
