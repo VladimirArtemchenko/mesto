@@ -1,12 +1,12 @@
-.popup_opened {
+.preview_opened {
     animation-duration: 0.4s;
 	animation-timing-function: linear;
-    animation-name: popup_opened;
+    animation-name: preview_opened;
 	opacity: 1;
 	visibility: visible;
 }
   
-@keyframes popup_opened { 
+@keyframes preview_opened { 
 	from {
 		opacity: 0;
 		visibility: hidden;

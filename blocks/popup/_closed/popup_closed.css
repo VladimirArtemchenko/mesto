@@ -1,0 +1,18 @@
+.popup_closed {
+	animation-duration: 0.4s;
+	animation-timing-function: linear;
+    animation-name: popup_closed;
+	opacity: 0;
+	visibility: hidden;
+}
+
+@keyframes popup_closed { 
+	from {
+		opacity: 1;
+		visibility: visible;
+	}
+	to {
+		opacity:0;
+		visibility: hidden;
+	}
+}
