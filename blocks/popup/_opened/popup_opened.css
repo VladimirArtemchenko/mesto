@@ -1,18 +1,4 @@
 .popup_opened {
-    animation-duration: 0.4s;
-	animation-timing-function: linear;
-    animation-name: popup_opened;
-	opacity: 1;
+	opacity: 1; 
 	visibility: visible;
-}
-  
-@keyframes popup_opened { 
-	from {
-		opacity: 0;
-		visibility: hidden;
-	}
-	to { 
-		opacity:1;
-		visibility: visible; 
-	}
 }
