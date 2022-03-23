@@ -1,9 +1,0 @@
-.preview__title {
-    font-size: 12px;
-    line-height: 15px;
-    color: white;
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    margin: 10px 0 0 0;
-}
