@@ -53,30 +53,32 @@ function createCard(item) {
 function editButtonHandler() {
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
-    togglePopup(popupEditInfo);
+    openPopup(popupEditInfo);
 }
 
-function togglePopup(popup) {
-    popup.classList.toggle('popup_opened');
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
 }
-
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
 function closeEditFormButtonHandler() {
-    togglePopup(popupEditInfo);
+    closePopup(popupEditInfo);
 }
 
 function editFormSubmitHandler(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    togglePopup(popupEditInfo);
+    closePopup(popupEditInfo);
 }
 
 function openNewCardFormButtonHandler() {
-    togglePopup(popupNewCard);
+    openPopup(popupNewCard);
 }
 
 function closeNewCardFormButtonHandler() {
-    togglePopup(popupNewCard);
+    closePopup(popupNewCard);
 }
 
 function newCardFormSubmitHandler(evt) {
@@ -87,7 +89,7 @@ function newCardFormSubmitHandler(evt) {
     }));
     newCardName.value = '';
     newCardLink.value = '';
-    togglePopup(popupNewCard);
+    closePopup(popupNewCard);
 }
 
 function likeButtonHandler(evt) {
@@ -102,9 +104,9 @@ function previewHandler(evt) {
     previewImage.src = evt.target.src;
     previewImage.alt = evt.target.alt;
     previewTitle.textContent = evt.target.alt;
-    togglePopup(preview);
+    openPopup(preview);
 }
 
 function closePreviewButtonHandler() {
-    togglePopup(preview);
+    closePopup(preview);
 }
