@@ -12,6 +12,11 @@
 .popup__input:last-of-type {
     margin-bottom: 0;
 }
+
+.popup__input:focus {
+    outline: 2px solid rgba(0, 196, 253,0.6);
+}
+
 @media screen and (max-width: 767px) {
     .popup__input {
         min-width: 238px;

@@ -1,89 +1,96 @@
- <!DOCTYPE html>
- <html lang="ru">
+<!DOCTYPE html>
+<html lang="ru">
 
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
-   <meta name="author" content="Vladimir Artemchenko">
-   <link rel="stylesheet" href="./pages/index.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, height=device-height initial-scale=1.0">
+  <meta name="author" content="Vladimir Artemchenko">
+  <link rel="stylesheet" href="./pages/index.css">
 
-   <title>Mesto</title>
- </head>
+  <title>Mesto</title>
+</head>
 
- <body class="root">
+<body class="root">
 
-   <header class="header">
-     <img class="logo header__logo" src="./images/header__logo.svg" alt="Лого-Мисто">
-   </header>
+<header class="header">
+  <img class="logo header__logo" src="./images/header__logo.svg" alt="Лого-Мисто">
+</header>
 
-   <main class="content">
-     <section class="profile">
-       <img class="profile__avatar" src="./images/Avatar.png" alt="Аватар профиля">
-       <div class="profile__info">
-         <h1 class="profile__name">Жак-Ив Кусто</h1>
-         <p class="profile__job">Исследователь океана</p>
-       </div>
-       <button type="button" class="profile__edit-button"></button>
-       <button type="button" class="profile__new-card-button"></button>
-     </section>
+<main class="content">
+  <section class="profile">
+    <img class="profile__avatar" src="./images/Avatar.png" alt="Аватар профиля">
+    <div class="profile__info">
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <p class="profile__job">Исследователь океана</p>
+    </div>
+    <button type="button" class="profile__edit-button"></button>
+    <button type="button" class="profile__new-card-button"></button>
+  </section>
 
-     <section class="cards">
-       <ul class="cards__list">
-       </ul>
-     </section>
-   </main>
+  <section class="cards">
+    <ul class="cards__list">
+    </ul>
+  </section>
+</main>
 
-   <footer class="footer">
-     <p class="footer__copyright"> &#xA9; 2022 Mesto Russia</p>
-   </footer>
+<footer class="footer">
+  <p class="footer__copyright"> &#xA9; 2022 Mesto Russia</p>
+</footer>
 
-   <div class="popup popup_type_edit">
-     <div class="popup__container">
-       <h2 class="popup__title">Редактировать профиль</h2>
-       <form name="edit" class="popup__form popup__form_type_edit">
-         <input name="username" type="text" class="popup__input popup__input_name_username" value="">
-         <input name="userjob" type="text" class=" popup__input popup__input_name_userjob" value="">
-         <button type="submit" class="popup__save-button popup__save-button_type_edit">Сохранить</button>
-       </form>
-       <button type="button" class="popup__close-button  popup__close-button_type_edit"></button>
-     </div>
-   </div>
+<div class="popup popup_type_edit">
+  <div class="popup__container">
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <form name="edit" class="popup__form popup__form_type_edit" novalidate>
+      <input name="username" type="text" id="username" class="popup__input popup__input_name_username" value="" required
+             minlength="2" maxlength="40">
+      <span id="username-error" class="error"></span>
+      <input name="userjob" type="text" id="userjob" class=" popup__input popup__input_name_userjob" value="" required
+             minlength="2" maxlength="200">
+      <span id="userjob-error" class="error"></span>
+      <button type="submit" class="popup__save-button popup__save-button_type_edit">Сохранить</button>
+    </form>
+    <button type="button" class="popup__close-button  popup__close-button_type_edit"></button>
+  </div>
+</div>
 
-   <div class="popup popup_type_new-card">
-     <div class="popup__container">
-       <h2 class="popup__title">Новое место</h2>
-       <form name="new-card" class="popup__form popup__form_type_new-card">
-         <input name="cardname" type="text" class="popup__input popup__input_name_card-name" value=""
-           placeholder="Название">
-         <input name="cardlink" type="text" class=" popup__input popup__input_name_card-link" value=""
-           placeholder="Ссылка на картинку">
-         <button type="submit" class="popup__save-button popup__save-button_type_new-card">Создать</button>
-       </form>
-       <button type="button" class="popup__close-button popup__close-button_type_new-card"></button>
-     </div>
-   </div>
+<div class="popup popup_type_new-card">
+  <div class="popup__container">
+    <h2 class="popup__title">Новое место</h2>
+    <form name="newcard" class="popup__form popup__form_type_new-card" novalidate>
+      <input name="cardname" id="cardname" type="text" class="popup__input popup__input_name_card-name" value=""
+             placeholder="Название" required minlength="2" maxlength="30">
+      <span id="cardname-error" class="error"></span>
+      <input name="cardlink" id="cardlink" type="url" class=" popup__input popup__input_name_card-link" value=""
+             placeholder="Ссылка на картинку" required>
+      <span id="cardlink-error" class="error"></span>
+      <button type="submit" class="popup__save-button popup__save-button_type_new-card">Создать</button>
+    </form>
+    <button type="button" class="popup__close-button popup__close-button_type_new-card"></button>
+  </div>
+</div>
 
-   <div class="popup popup_type_preview">
-     <div class="popup__container popup__container_type_preview">
-       <img class="popup__image" src="#" alt="#">
-       <h2 class="popup__title popup__title_type_preview"></h2>
-       <div class="popup__close-button popup__close-button_type_preview"></div>
-     </div>
-   </div>
+<div class="popup popup_type_preview">
+  <div class="popup__container popup__container_type_preview">
+    <img class="popup__image" src="#" alt="#">
+    <h2 class="popup__title popup__title_type_preview"></h2>
+    <div class="popup__close-button popup__close-button_type_preview"></div>
+  </div>
+</div>
 
-   <template id="card-template">
-     <li class="card">
-       <img src="#" alt="#" class="card__image">
-       <button type="button" class="card__delete-button"></button>
-       <div class="card__container">
-         <h2 class="card__title"></h2>
-         <button type="button" class="card__like-button"></button>
-       </div>
-     </li>
-   </template>
+<template id="card-template">
+  <li class="card">
+    <img src="#" alt="#" class="card__image">
+    <button type="button" class="card__delete-button"></button>
+    <div class="card__container">
+      <h2 class="card__title"></h2>
+      <button type="button" class="card__like-button"></button>
+    </div>
+  </li>
+</template>
 
-   <script rel="script" src="./scripts/cards.js"></script>
-   <script rel="script" src="./scripts/index.js"></script>
- </body>
+<script rel="script" src="./scripts/cards.js"></script>
+<script rel="script" src="scripts/validate.js"></script>
+<script rel="script" src="./scripts/index.js"></script>
+</body>
 
- </html>
+</html>
