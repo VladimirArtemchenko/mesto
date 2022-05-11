@@ -58,14 +58,15 @@ function createCard(item) {
 }
 
 function openProfilePopup() {
-    resetForm(popupEditInfo);
+    validateProfileForm.resetForm()
     nameInput.value = profileName.textContent;
     jobInput.value = profileJob.textContent;
     openPopup(popupEditInfo);
 }
 
 function openNewCardPopup() {
-    resetForm(popupNewCard);
+    newCardForm.reset();
+    validateNewCardForm.resetForm()
     openPopup(popupNewCard)
 }
 
@@ -86,24 +87,6 @@ function handleEscKey(evt) {
     }
 }
 
-function resetForm(popup) {
-    const button = popup.querySelector('.popup__save-button');
-    const inputList = Array.from(popup.querySelectorAll('.popup__input'));
-    const errorList = Array.from(popup.querySelectorAll('.error'));
-    errorList.forEach(error => {
-        error.textContent = '';
-        error.classList.remove('error_active')
-    });
-    inputList.forEach(input => {
-        input.value = ''
-        input.classList.remove('popup__input_type_error')
-    });
-    if (button) {
-        button.disabled = true;
-        button.classList.add('popup__save-button_type_disabled');
-    }
-}
-
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
@@ -120,9 +103,9 @@ function handleNewCardFormSubmit(evt) {
     closePopup(popupNewCard);
 }
 
-export function handleCardClick(item) {
-    previewImage.src = item.target.src;
-    previewImage.alt = item.target.alt;
-    previewTitle.textContent = item.target.alt;
+export function handleCardClick(name,link) {
+    previewImage.src = link;
+    previewImage.alt = name;
+    previewTitle.textContent = name;
     openPopup(preview);
 }
