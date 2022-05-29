@@ -47,7 +47,7 @@ cardList.renderItems()
 
 const popupProfile = new PopupWithForm(popupEditInfoSelector, (evt) => {
     evt.preventDefault();
-    const formValues = popupProfile.getInputValues();
+    const formValues = popupProfile._getInputValues();
     userInfo.setUserInfo({
         userName: formValues.userName,
         userJob: formValues.userJob,
@@ -62,7 +62,7 @@ validateProfileForm.enableValidation()
 
 const popupNewCard = new PopupWithForm(popupNewCardSelector, (evt) => {
     evt.preventDefault();
-    const formValues = popupNewCard.getInputValues();
+    const formValues = popupNewCard._getInputValues();
     const item = {
         name: formValues.cardName,
         link: formValues.cardLink
