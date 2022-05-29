@@ -1,5 +1,10 @@
 import "./index.css";
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage";
+import PopupWithForm from "../components/PopupWithForm";
+import UserInfo from "../components/UserInfo";
 import {
     cardsList,
     cardTemplate,
@@ -15,13 +20,14 @@ import {
     profileNameSelector,
     validateObject
 } from "../utils/constants.js";
-import FormValidator from "../components/FormValidator.js";
-import Section from "../components/Section.js";
-import PopupWithImage from "../components/PopupWithImage";
-import PopupWithForm from "../components/PopupWithForm";
-import UserInfo from "../components/UserInfo";
 
 const userInfo = new UserInfo(profileNameSelector, profileJobSelector)
+
+const popupPreview = new PopupWithImage(popupPreviewSelector)
+
+const validateProfileForm = new FormValidator(popupEditForm, validateObject);
+
+const validateNewCardForm = new FormValidator(popupNewCardForm, validateObject);
 
 const createCard = (item) => {
     const card = new Card(item, cardTemplate, () => {
@@ -29,9 +35,6 @@ const createCard = (item) => {
     })
     return card.createCard()
 }
-
-const popupPreview = new PopupWithImage(popupPreviewSelector)
-popupPreview.setEventListeners();
 
 const cardList = new Section({
         items: initialCards,
@@ -43,7 +46,6 @@ const cardList = new Section({
     },
     cardsList
 )
-cardList.renderItems()
 
 const popupProfile = new PopupWithForm(popupEditInfoSelector, (evt) => {
     evt.preventDefault();
@@ -54,11 +56,6 @@ const popupProfile = new PopupWithForm(popupEditInfoSelector, (evt) => {
     })
     popupProfile.close();
 })
-
-popupProfile.setEventListeners();
-
-const validateProfileForm = new FormValidator(popupEditForm, validateObject);
-validateProfileForm.enableValidation()
 
 const popupNewCard = new PopupWithForm(popupNewCardSelector, (evt) => {
     evt.preventDefault();
@@ -71,11 +68,6 @@ const popupNewCard = new PopupWithForm(popupNewCardSelector, (evt) => {
     popupNewCard.close();
 })
 
-popupNewCard.setEventListeners();
-
-const validateNewCardForm = new FormValidator(popupNewCardForm, validateObject);
-validateNewCardForm.enableValidation();
-
 openNewCardFormButton.addEventListener('click', () => {
     validateNewCardForm.resetForm();
     popupNewCard.open();
@@ -86,5 +78,13 @@ openEditFormButton.addEventListener("click", () => {
     popupProfile.setInputValues(userData)
     validateProfileForm.resetForm();
     popupProfile.open();
-
 });
+
+popupPreview.setEventListeners();
+cardList.renderItems()
+popupProfile.setEventListeners();
+validateProfileForm.enableValidation()
+popupNewCard.setEventListeners();
+validateNewCardForm.enableValidation();
+
+
