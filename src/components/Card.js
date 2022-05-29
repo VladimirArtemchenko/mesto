@@ -1,10 +1,9 @@
-import {handleCardClick} from "./index.js";
-
 export default class Card {
-    constructor(date, template) {
+    constructor(date, template,callback) {
         this._name = date.name;
         this._link = date.link;
         this._template = template;
+        this._callback = callback;
     }
 
     _getTemplate() {
@@ -22,7 +21,7 @@ export default class Card {
             .querySelector(".card__delete-button")
             .addEventListener("click", () => this._handlerDeleteButton());
 
-        this._cardImage.addEventListener("click", () => handleCardClick(this._name,this._link));
+        this._cardImage.addEventListener("click", this._callback);
     }
 
     _handlerLikeButton() {

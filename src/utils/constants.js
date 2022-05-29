@@ -31,3 +31,16 @@ export const validateObject = {
     inputErrorClass: "popup__input_type_error",
     errorClass: "error_active",
 };
+export const profileNameSelector = '.profile__name';
+export const profileJobSelector = '.profile__job';
+export const popupPreviewSelector = '.popup_type_preview';
+export const popupEditInfoSelector ='.popup_type_edit';
+export const popupNewCardSelector = '.popup_type_new-card';
+export const openEditFormButton = document.querySelector('.profile__edit-button');
+export const openNewCardFormButton = document.querySelector('.profile__new-card-button');
+export const popupEditForm = document.forms.edit;
+export const popupNewCardForm = document.forms.newcard;
+export const cardTemplate = "#card-template"
+export const cardsList = document.querySelector(".cards__list");
+
+

@@ -1,4 +1,3 @@
-
 export default class FormValidator {
     constructor(form, validationObject) {
         this._form = form;

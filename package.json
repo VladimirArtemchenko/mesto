@@ -1,0 +1,38 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "https://vladimirartemchenko.github.io/mesto/index.html\r ------\r ## **Описание проекта**\r Данная работа выполнена по заданию четвертого спринта \"Яндекс-практикума\" проект построен в соответствии с БЭМ методологией.\r Проеект выполнен с использованием адаптивной верстки для устройств с разрешением экрана более 320 пикселей. Сайт представлет мой личный фотоальбом.\r ## **Технологии**\r 1. Flex\r 2. Медиа-запросы\r 3. Реализована возможность открытия формы для редактирования данных профиля и их сохранения.\r 4. Реализована возможность добавления новых карточек с фотографиями и описанием.\r 5. Реализована возможность удаления карточек.\r 6. Реализована возможность увеличение картинок для просмотра.\r 7. Реализована возможность простановки лайков.\r 8. Добавлена валидация форм.\r 9. улучшена работа попапов.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladimirArtemchenko/mesto.git"
+  },
+  "author": "Vladimir Artemchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladimirArtemchenko/mesto/issues"
+  },
+  "homepage": "https://github.com/VladimirArtemchenko/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "autoprefixer": "^10.4.7",
+    "babel-loader": "^8.2.5",
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.9",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss-loader": "^7.0.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0"
+  },
+  "dependencies": {
+    "core-js": "^3.22.7"
+  }
+}
