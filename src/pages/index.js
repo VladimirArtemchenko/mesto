@@ -55,12 +55,10 @@ const popupProfile = new PopupWithForm(popupEditInfoSelector, (data) => {
     popupProfile.close();
 })
 
-const popupNewCard = new PopupWithForm(popupNewCardSelector, (evt) => {
-    evt.preventDefault();
-    const formValues = popupNewCard._getInputValues();
+const popupNewCard = new PopupWithForm(popupNewCardSelector, (data) => {
     const item = {
-        name: formValues.cardName,
-        link: formValues.cardLink
+        name: data.cardName,
+        link: data.cardLink
     }
     cardList.addItem(createCard(item))
     popupNewCard.close();
