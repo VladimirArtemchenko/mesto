@@ -16,9 +16,10 @@ export default class PopupWithForm extends Popup {
         return this._formValues;
     }
     setEventListeners() {
-        this._formElement.addEventListener("submit", (evt) =>
-            this._handlerSubmitForm(evt)
-        );
+        this._formElement.addEventListener("submit", (evt) =>{
+            evt.preventDefault()
+            this._handlerSubmitForm(this._getInputValues())
+        });
         super.setEventListeners();
     }
     close() {
@@ -30,5 +31,4 @@ export default class PopupWithForm extends Popup {
             input.value=values[input.name];
         })
     }
-
 }

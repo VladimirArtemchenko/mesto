@@ -47,12 +47,10 @@ const cardList = new Section({
     cardsList
 )
 
-const popupProfile = new PopupWithForm(popupEditInfoSelector, (evt) => {
-    evt.preventDefault();
-    const formValues = popupProfile._getInputValues();
+const popupProfile = new PopupWithForm(popupEditInfoSelector, (data) => {
     userInfo.setUserInfo({
-        userName: formValues.userName,
-        userJob: formValues.userJob,
+        userName: data.userName,
+        userJob: data.userJob,
     })
     popupProfile.close();
 })
@@ -86,5 +84,3 @@ popupProfile.setEventListeners();
 validateProfileForm.enableValidation()
 popupNewCard.setEventListeners();
 validateNewCardForm.enableValidation();
-
-
