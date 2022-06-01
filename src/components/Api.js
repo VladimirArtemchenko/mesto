@@ -22,11 +22,43 @@ export default class Api {
             }).then(this._checkResponse)
     }
 
-    getData(infoDomain, cardsDomain) {
+    getUserInfo() {
+        const infoDomain="/users/me"
+        const cardsDomain="/cards"
         return Promise.all([
             this.makeRequest(infoDomain),
             this.makeRequest(cardsDomain)
         ])
     }
+
+    deleteLikeCard(cardId) {
+        const requestUrl = `/cards/${cardId}/likes`;
+        return this.makeRequest(requestUrl, "DELETE")
+    }
+
+    addLikeCard(cardId) {
+        const requestUrl = `/cards/${cardId}/likes`;
+        return this.makeRequest(requestUrl, "PUT")
+    }
+
+    deleteCard(cardId) {
+        const requestUrl = `/cards/${cardId}`;
+        return this.makeRequest(requestUrl, "DELETE")
+    }
+
+    updateUserInfo(body) {
+        const requestUrl = "/users/me";
+        return this.makeRequest(requestUrl, "PATCH",body)
+    }
+
+    addNewCard(body) {
+        const requestUrl = "/cards";
+        return this.makeRequest(requestUrl, "POST",body)
+    }
+    updateAvatar(body) {
+        const requestUrl = "/users/me/avatar";
+        return this.makeRequest(requestUrl, "PATCH",body)
+    }
+
 
 }

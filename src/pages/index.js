@@ -35,8 +35,17 @@ const api = new Api({
     token: "308d04e2-be48-4647-a1c0-1964231c9473",
 });
 
-api
-    .getData("/users/me", "/cards")
+const popupPreview = new PopupWithImage(popupPreviewSelector)
+
+const validateProfileForm = new FormValidator(popupEditForm, validateObject);
+
+const validateNewCardForm = new FormValidator(popupNewCardForm, validateObject);
+
+const validateChangeAvatarForm = new FormValidator(popupChangeAvatarForm, validateObject);
+
+const popupConfirm = new PopupWithConfirm(popupConfirmSelector);
+
+api.getUserInfo( )
     .then((res) => {
         const [userData, cardData] = res;
         userInfo.setUserInfo({
@@ -51,17 +60,6 @@ api
         console.log(err)
     })
 
-const popupPreview = new PopupWithImage(popupPreviewSelector)
-
-const validateProfileForm = new FormValidator(popupEditForm, validateObject);
-
-const validateNewCardForm = new FormValidator(popupNewCardForm, validateObject);
-
-const validateChangeAvatarForm = new FormValidator(popupChangeAvatarForm, validateObject);
-
-const popupConfirm = new PopupWithConfirm(popupConfirmSelector);
-
-
 const createCard = (item) => {
     const card = new Card({
         data: item,
@@ -71,9 +69,9 @@ const createCard = (item) => {
             popupPreview.open(item.name, item.link);
         },
         handlerLikeButton: () => {
-            const url = `/cards/${card.getCardId()}/likes`
+            const cardId = card.getCardId()
             if (card.isLiked) {
-                api.makeRequest(url, "DELETE")
+                api.deleteLikeCard(cardId)
                     .then((data) => {
                         card.unsetLike();
                         card.likesCountUpdate(data.likes)
@@ -82,7 +80,7 @@ const createCard = (item) => {
                         console.log(`ошибка ${err}`)
                     })
             } else {
-                api.makeRequest(url, 'PUT')
+                api.addLikeCard(cardId)
                     .then((data) => {
                         card.setLike();
                         card.likesCountUpdate(data.likes)
@@ -93,12 +91,12 @@ const createCard = (item) => {
             }
         },
         handlerDeleteClick: (evt) => {
-            const url = `/cards/${card.getCardId()}`
+            const cardId = card.getCardId()
             const cardElement = evt.target.closest('.card');
             popupConfirm.setHandlerSubmit((evt) => {
                 evt.preventDefault();
                 popupConfirm.isLoading(true);
-                api.makeRequest(url, "DELETE")
+                api.deleteCard(cardId)
                     .then(() => {
                         cardElement.remove()
                         popupConfirm.close();
@@ -129,7 +127,7 @@ const cardList = new Section({
 const popupProfile = new PopupWithForm(popupEditInfoSelector, (data) => {
     const body = {name: data.userName, about: data.userJob};
     popupProfile.isLoading(true);
-    api.makeRequest('/users/me', "PATCH", body)
+    api.updateUserInfo(body)
         .then((data) => {
             userInfo.setUserInfo({userName: data.name, userJob: data.about});
             popupProfile.close();
@@ -148,7 +146,7 @@ const popupNewCard = new PopupWithForm(popupNewCardSelector, (data) => {
         link: data.cardLink
     }
     popupNewCard.isLoading(true);
-    api.makeRequest("/cards", "POST", item)
+    api.addNewCard(item)
         .then((card) => {
             const cardElement = createCard(card);
             cardList.addItemPrepend(cardElement);
@@ -165,9 +163,8 @@ const popupNewCard = new PopupWithForm(popupNewCardSelector, (data) => {
 const popupChangeAvatar = new PopupWithForm(popupChangeAvatarSelector, (data) => {
     const link = data.inputLink
     popupChangeAvatar.isLoading(true);
-    api.makeRequest('/users/me/avatar', 'PATCH', {avatar: link})
+    api.updateAvatar({avatar: link})
         .then((data) => {
-            console.log({avatar: link})
             userInfo.setAvatar(link);
             popupChangeAvatar.close();
         })
@@ -199,7 +196,6 @@ openEditFormButton.addEventListener("click", () => {
 });
 
 popupPreview.setEventListeners();
-// cardList.renderItems()
 popupProfile.setEventListeners();
 popupConfirm.setEventListeners();
 popupChangeAvatar.setEventListeners();

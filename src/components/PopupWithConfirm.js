@@ -22,10 +22,10 @@ export default class PopupWithConfirm extends Popup {
     isLoading(isLoading) {
         if (isLoading === true) {
             this._subbmitButton.textContent = 'Удаление...';
-            this._subbmitButton.classList.add('popup__save-button_type_disabled');
+            this._subbmitButton.disabled=true;
         } else {
             this._subbmitButton.textContent = 'Ok';
-            this._subbmitButton.classList.remove('popup__save-button_type_disabled');
+            this._subbmitButton.disabled=false;
         }
     }
 }
