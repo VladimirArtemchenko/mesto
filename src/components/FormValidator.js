@@ -11,7 +11,6 @@ export default class FormValidator {
         this._setEventListeners();
     };
 
-
     _setEventListeners() {
         this.toggleButtonState();
         this._inputList.forEach((inputElement) => {
@@ -37,14 +36,12 @@ export default class FormValidator {
         errorElement.classList.add(`${this._validationObject.errorClass}`);
     };
 
-
     _hideInputError(inputElement) {
         const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
         inputElement.classList.remove(`${this._validationObject.inputErrorClass}`);
         errorElement.classList.remove(`${this._validationObject.errorClass}`);
         errorElement.textContent = "";
     };
-
 
     toggleButtonState() {
         if (!this._form.checkValidity()) {
